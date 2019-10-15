@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+
+{% load static %}<!doctype html> 
+
+{% block breadcrumb %} 
+     {% if user.is_staff %}
+
+<html lang="en">
+<head>
+      <meta charset="UFT-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0 minimum-scale=1.0">
+      <meta http-quiv="X-UA-Compatible" content="ie=edge">
+      <title>Documento</title>
+</head>
+<body>
+     <form method="POST">
+         {% csrf_token %}
+
+         <h2> ¿Estás seguro/a que quieres eliminar la mascota {{ mascota.name }} ?</h2>
+         <button type="submit" class="btn btn-primary ml-2">Eliminar</button>
+    </form>
+</body>
+</html>
+    {% else %}
+         <h1>Error 404</h1>
+    {% endif %} 
+      
+{% endblock %}   
+
+

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+  <div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'home' %}">Iniciar sesión</a>
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title" alig='center'>Log in</h3>
+            <form method="post" novalidate>
+              {% csrf_token %}
+              
+               {{ form.as_p }}  
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+          </div>
+          <div class="card-footer text-muted text-center">
+            Eres nuevo? <a href="{% url 'signup' %}">Regístrate</a>
+          </div>
+          <div class="card-footer text-muted text-center">
+            Tienes una fundación de animales? <a href="{% url 'register' %}">Regístrate</a>
+          </div>
+        </div>
+        <div class="text-center py-2">
+          <small>
+            <a href="{% url 'password_reset' %}" class="text-muted">¿Olvidaste tu contraseña?</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}<!DOCTYPE html>
+
+
+{% block breadcrumb %}
+
+{% if not user.is_staff and user.groups.all.0.name == 'fundaciones'%}
+<p>Disculpanos por la espera, en un momento atenderemos tu solicitud</p><br/>
+<p>Deben esperar hasta que los miembros de "Link a Pet" aprueben tu solicitud como fundación. </p><br/>
+{% endif %}
+
+    <form action="index.html" method="GET">
+        <a href=""> <img src="{% static 'img/adopta.jpg' %}" alt="Foto inicio Garras y Patas" role="button" class="w-100"/></a>
+        <h1><p class="text-center"><img src="{% static 'img/logo.png' %}"></p></h1> <br/>
+    
+       <p>La aplicación Link a Pet tiene como finalidad generar un mayor interés en la adopción de mascotas,
+       mediante un software que permite el emparejamiento entre adoptante y mascota en base a sus características.</p><br/>
+
+     </form>
+<form>
+   <img src="{% static 'img/bff.jpg' %}"></p> <br/>
+</form>
+
+{% if user.is_authenticated %}
+<a href="{% url 'create_cuestionario' %}"> <img src="{% static 'img/bvc.jpg' %}" alt="Cuestionario" role="button" class="w-100"/></a>
+{% else %}
+  <a href="{% url 'home' %}"> 
+{% endif %}
+
+
+{% endblock %}

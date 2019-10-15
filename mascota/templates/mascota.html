@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% load static %}<!doctype html>    
+
+
+{% block breadcrumb %}
+
+    {% if user.is_staff %}
+
+<html lang="en">
+<head>
+      <meta charset="UFT-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0 minimum-scale=1.0">
+      <meta http-quiv="X-UA-Compatible" content="ie=edge">
+      <title>Documento</title>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'list_mascota' %}">Agregar o Modificar mascota</a>
+    </h1>
+    <tr>
+         <a href="{% url 'create_mascota' %}" class="btn btn-warning ml-2">Nueva mascota</a>
+    </tr>
+    <tr></tr>
+             <table border="2%" class="table">
+             
+             <thead class="thead-inverse" >
+              <tr>
+                 <th class="bg-info">Foto</th>
+                 <th class="bg-info">Nombre</th>
+                 <th class="bg-info">Edad</th>
+                 <th class="bg-info">Raza</th>
+                 <th class="bg-info">sexo</th>
+                 <th class="bg-info">tipo</th>
+                 <th class="bg-info">estado</th>
+                 <th class="bg-info">Tamaño</th>
+                 <th class="bg-info">Descripción</th>
+              </tr>
+            </thead>
+   <tbody>
+    {% for mascota in mascota %}
+       <tr>
+         
+         <td><img src="/{{ mascota.img.url }}" class="w-25"></td>
+         <td> <a href="{% url 'update_mascota' mascota.id %}">{{ mascota.nombre }} </td>
+         <td> {{ mascota.edad }} </td>
+         <td> {{ mascota.raza }} </td>
+         <td> {{ mascota.sexo}} </td>
+         <td> {{ mascota.tipo}} </td>
+         <td> {{ mascota.estado}} </td>
+         <td> {{ mascota.tamano }} </td>
+         <td> {{ mascota.descripcion }} </td>
+      </tr>
+   {% endfor %}
+   </tbody>
+</table>
+</body>
+</html>
+    {% else %}
+         <h1>Error 404</h1>
+    {% endif %}   
+
+{% endblock %}
+

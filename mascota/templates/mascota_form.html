@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}<!doctype html> 
+
+{% block breadcrumb %} 
+
+  {% if user.is_staff %}
+
+
+<html lang="en">
+<head>
+      <meta charset="UFT-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0 minimum-scale=1.0">
+      <meta http-quiv="X-UA-Compatible" content="ie=edge">
+      <title>Documento</title>
+</head>
+<body>
+    <div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'list_mascota' %}">Agregar o Modificar mascota</a>
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card">
+          <div class="card-body"> 
+     <form method="POST" enctype=multipart/form-data>
+
+         <img src="/{{ mascota.img.url }}" class="w-100">
+         {% csrf_token %} 
+
+         {{ form.as_p }}
+         <button type="submit" class="btn btn-primary ml-2">Guardar</button>
+         
+        {% if mascota %}
+        <td>
+         <a href="{% url 'delete_mascota' mascota.id %}" class="btn btn-primary ml-2">Borrar</a>
+        </td>
+        {% endif %}
+    </form>
+
+
+    </div>
+        </div>
+        </div>
+      </div>
+    </div>   
+</body>
+</html>
+    {% else %}
+         <h1>Error 404</h1>
+    {% endif %}
+    
+{% endblock %}
+

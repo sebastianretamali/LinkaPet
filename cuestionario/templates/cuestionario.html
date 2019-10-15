@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}<!doctype html> 
+
+
+
+{% block breadcrumb %}  
+
+   {% if user.is_authenticated %}
+<html lang="en">
+<head>
+      <meta charset="UFT-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0 minimum-scale=1.0">
+      <meta http-quiv="X-UA-Compatible" content="ie=edge">
+      <title>Documento</title>
+</head>
+<body>
+ <form>
+    <h1 class="text-center logo my-4">
+      <a href="#">Responda Cuestionario</a>
+    </h1>
+     <div class="row justify-content-center">
+    
+    <div class="card">
+    <div class="card-body">
+        
+     <form method="POST" enctype=multipart/form-data>
+         {% csrf_token %}
+         
+         {{ form.as_p }}
+        <p class="text-center"> <button type="submit" class="btn btn-primary ml-2">Guardar</button> </p>       
+    </form>
+       </div>
+       </div>
+       
+        </div>
+        </div>
+        
+</form>
+</body>
+</html>
+    {% else %}
+         <h1>Error 404</h1>
+    {% endif %} 
+
+{% endblock %}
+
