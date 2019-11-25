@@ -44,7 +44,7 @@ def register(request):
     #Creamos el formulario de autentificación vacio
     form = SignUpForm()
     if request.method == "POST":
-        #añadimos los daos recibidos al formulario
+        #añadimos los datos recibidos al formulario
         form = SignUpForm(data=request.POST)
         #si el formulario es valido..      
         if form.is_valid():
