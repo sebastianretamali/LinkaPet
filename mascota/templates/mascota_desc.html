@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}<!doctype html> 
+
+{% block breadcrumb %} 
+
+  {% if user.is_authenticated %}
+
+
+<html lang="en">
+<head>
+      <meta charset="UFT-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0 minimum-scale=1.0">
+      <meta http-quiv="X-UA-Compatible" content="ie=edge">
+      <title>Documento</title>
+</head>
+<body>
+    <div class="container">
+    <h1 class="text-center logo my-4">
+      <a>Descripción mascota</a>
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card">
+          <div class="card-body"> 
+     <form method="POST" enctype=multipart/form-data>
+       <center>   
+         
+        <table border="3%" class="table" style="max-width: 350px; max-height: 300px"> 
+        <th class="p-3 mb-2 bg-info"> <img src="/{{ mascota.img.url }}" class="w-100"></th>
+        
+        
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Nombre: {{ mascota.nombre }}</th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Edad: {{ mascota.edad }} años</th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Raza: {{ mascota.raza }} </th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Sexo: {{ mascota.sexo}} </th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Estado: {{ mascota.estado}} </th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Tamaño: {{ mascota.tamano }}</th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Personalidad: {{ mascota.personalidad }}</th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Fundación: {{ mascota.fundacion }}</th></tr>
+           <tr> <th class="p-3 mb-2 bg-light text-dark"> Mail fundación: {{ mascota.mail_fundacion }}</th></tr>
+           <tr> <th class="p-3 mb-2 bg-info" class="w-100"> Descripcion: {{ mascota.descripcion }}</th></tr>
+       </table>
+      <tr>
+         <a href="{% url 'aleatorio' mascota.id %}"> <img src="{% static 'img/dislike.png' %}" alt="Cuestionario" role="button" width="90" height="90" /></a>
+          &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; 
+         <a href="{% url 'match_mascota' mascota.id %}"> <img src="{% static 'img/corazonn.png' %}" alt="Mascota" role="button"  width="80" height="80"/></a>
+      </tr>
+      
+    </center> 
+         
+
+
+    </form>
+
+
+    </div>
+        </div>
+        </div>
+      </div>
+    </div>   
+</body>
+</html>
+    {% else %}
+         <h1>Error 404</h1>
+    {% endif %}
+
+
+
+
+{% endblock %}
+

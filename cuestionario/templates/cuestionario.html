@@ -2,11 +2,9 @@
 
 {% load static %}<!doctype html> 
 
+{% block breadcrumb %} 
+  {% if user.is_active %}
 
-
-{% block breadcrumb %}  
-
-   {% if user.is_authenticated %}
 <html lang="en">
 <head>
       <meta charset="UFT-8">
@@ -16,33 +14,28 @@
       <title>Documento</title>
 </head>
 <body>
- <form>
+    <div class="container">
     <h1 class="text-center logo my-4">
-      <a href="#">Responda Cuestionario</a>
+      <a href="{% url 'create_cuestionario' %}">Contestar cuestionario</a>
     </h1>
-     <div class="row justify-content-center">
-    
-    <div class="card">
-    <div class="card-body">
-        
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card">
+          <div class="card-body"> 
      <form method="POST" enctype=multipart/form-data>
-         {% csrf_token %}
-         
+         {% csrf_token %} 
+
          {{ form.as_p }}
-        <p class="text-center"> <button type="submit" class="btn btn-primary ml-2">Guardar</button> </p>       
+         <button  type="submit" class="btn btn-primary ml-2">Realiza match</button>
     </form>
-       </div>
-       </div>
-       
+    </div>
         </div>
         </div>
-        
-</form>
+      </div>
+    </div>   
 </body>
 </html>
     {% else %}
          <h1>Error 404</h1>
-    {% endif %} 
-
+    {% endif %}
 {% endblock %}
-

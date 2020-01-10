@@ -1,13 +1,13 @@
 from django import forms
 from .models import Cuestionario
 
+#Questionnaire Form
 class CuestionarioForm(forms.ModelForm):
     class Meta:
         model = Cuestionario
 
-        fields = ['img', 'personalidad', 'cant_ninos', 'edad', 'deportes', 'vivienda']
+        fields = ['personalidad', 'cant_ninos', 'edad', 'deportes', 'vivienda']
         labels = {
-            'img': ('Ingrese una fotografía de su rostro'),
             'personalidad': ('¿Qué personalidad es la que tienes?'),
             'cant_ninos': ('¿Cuántos niños viven contigo?'),
             'edad': ('¿Qué edad tienes?'),

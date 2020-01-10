@@ -7,7 +7,10 @@ from .forms import SignUpForm, UserForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth.models import Group
 
-#registro de usuarios
+from django.contrib.auth.models import User
+
+
+#User Registration
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -20,7 +23,7 @@ def signup(request):
       form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
-#Editar perfiles usuarios
+#Edit user profiles
 def edit_profile(request, password=None):
   if request.method == 'POST':
     form = UserForm(request.POST, instance=request.user)
@@ -35,7 +38,7 @@ def edit_profile(request, password=None):
       return render(request, 'edit_profile.html', {'form': form})
 
 
-#registro para las fundaciones
+#registration for foundations
 def register(request):
     return render(request, "register.html")
 
@@ -48,7 +51,6 @@ def register(request):
         form = SignUpForm(data=request.POST)
         #si el formulario es valido..      
         if form.is_valid():
-
             #creamos la nueva cuenta de usuario
             fundaciones = form.save()
             #Guardar usuario en grupo fundaciones
@@ -67,4 +69,9 @@ def register(request):
     #si llegamos al final renderizamos el formulario
     return render(request, "register.html", {'form': form})
 
+
+#listar 
+#def list_user(request):
+#    user = User.objects.all()
+#    return render(request, 'mascota.html', {'mascota': user})
 

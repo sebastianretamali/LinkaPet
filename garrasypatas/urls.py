@@ -1,18 +1,3 @@
-"""garrasypatas URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import include, path
@@ -21,21 +6,17 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
 from accounts import views as accounts_views
 
-from mascota.views import list_mascota, create_mascota, delete_mascota, update_mascota
-
+#import tabla mascota
+from mascota.views import list_mascota, create_mascota, delete_mascota, update_mascota, aleatorio, descripcion_mascota, match_mascota, successView
+#import tabla Cuestiorario
 from cuestionario.views import list_cuestionario, create_cuestionario
-
+#import tabla auth_user
 from accounts.views import edit_profile
 
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import static
 
-from cuestionario.views import create_cuestionario
-
-#Prueba de inicio de seción fundaciones
-#from fundaciones import views
-#from fundaciones import views as fundaciones_views
 
 urlpatterns = [
     #Login, logout, sigup.
@@ -72,15 +53,21 @@ urlpatterns = [
     url(r'^settings/password/done/$', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
          name='password_change_done'),
 
-    #mascotas
+    #url mascotas
     path('list/', list_mascota, name='list_mascota'),
     path('crea/', create_mascota, name='create_mascota'),
     path('update/<int:id>/', update_mascota, name='update_mascota'),
     path('delete/<int:id>/', delete_mascota, name='delete_mascota'),
+
+    path('descripcion/<int:id>/', descripcion_mascota, name='descripcion_mascota'),
     
+    path('match/<int:id>/', match_mascota, name='match_mascota'),
+    path('success/', successView, name='success'),
+
     #Cuestionario
     path('list/cuestionario/', list_cuestionario, name='list_cuestionario'),
     path('crea/cuestionario/', create_cuestionario, name='create_cuestionario'),
+    path('aleatorio/<int:id>/', aleatorio, name='aleatorio'),
 
     #Inicio de seción fundaciones
     url(r'^register/$', accounts_views.register, name='register'),

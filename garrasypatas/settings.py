@@ -37,18 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'accounts.apps.AccountsConfig',
+    'widget_tweaks',
+    #'mascota.apps.MascotalConfig',
+    #apps
     'accounts',
     'mascota',
     'cuestionario',
+    #'match',
+     
 
-    'widget_tweaks',
-
-    #'fundaciones',
     
 ]
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,7 +86,7 @@ WSGI_APPLICATION = 'garrasypatas.wsgi.application'
 DATABASES = {
          'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'linkapetbd',
+            'NAME': 'link',
             'USER': 'root',
             'PASSWORD': '',
             'HOST': 'localhost',

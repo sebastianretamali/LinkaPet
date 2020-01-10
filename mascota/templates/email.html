@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% load static %}<!doctype html>    
+
+
+{% block breadcrumb %}
+
+    {% if user.is_authenticated %}
+
+<html lang="en">
+<head>
+      <meta charset="UFT-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0 minimum-scale=1.0">
+      <meta http-quiv="X-UA-Compatible" content="ie=edge">
+      <title>Documento</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'list_cuestionario' %}">Adopta a tu mascota ideal</a>
+    </h1>
+    <tr></tr>    
+
+   <tbody>
+     <center>
+
+<form method="post">
+    
+          <tr>
+        <img src="/{{ mascota.img.url }}" width="350" height="350"></a></td>
+       </tr>
+    
+         <table border="3%" class="table" style="max-width: 350px; max-height: 300px">
+         <th class="bg-info">Nombre: {{ mascota.nombre }}</th>
+         <th class="bg-info">Edad:  {{ mascota.edad }}</th>
+         <th class="bg-info">Sexo: {{ mascota.sexo }} </th>
+         <th class="bg-info">Fundacion: {{ mascota.fundacion }} </th>
+         <th class="bg-info">Contacto: {{ mascota.mail_fundacion }} </th>
+    </table>
+
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    <div class="form-actions">
+      <button src="{% static 'img/U.png' %}" class="btn btn-warning ml-2" type="submit">Enviar contacto para adopción</button>  
+
+
+
+    </div>
+   </form>
+    </br>Elegir otra mascota</br><a href="{% url 'list_cuestionario' %}"><img src="{% static 'img/flecha.png' %}" alt="Cuestionario" role="button" width="90" height="90"> 
+   </center>
+   </tbody>
+
+</body>
+</html>
+    {% else %}
+         <h1>Error 404</h1>
+    {% endif %}   
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% load static %}<!doctype html>    
+
+
+{% block breadcrumb %}
+
+    {% if user.is_authenticated %}
+
+<html lang="en">
+<head>
+      <meta charset="UFT-8">
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0 minimum-scale=1.0">
+      <meta http-quiv="X-UA-Compatible" content="ie=edge">
+      <title>Documento</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'list_cuestionario' %}">Elige tu mascota ideal</a>
+    </h1>
+    <tr></tr>    
+
+   <tbody>
+    {% for mascota in mascota %}
+   
+    
+    <center>
+       <tr>
+        <td> <a href="{% url 'descripcion_mascota' mascota.id %}"> <img src="/{{ mascota.img.url }}" width="350" height="350"></a></td>
+      </tr>
+    <center>
+
+    <center>
+    <table border="3%" class="table" style="max-width: 350px; max-height: 300px">
+         <th class="bg-info">Nombre: {{ mascota.nombre }}</th>
+         <th class="bg-info">Edad:  {{ mascota.edad }}</th>
+         <th class="bg-info">Sexo: {{ mascota.sexo }} </th>
+    </table>
+    </center>
+
+    <center>
+      <tr>
+         <a href="{% url 'aleatorio' mascota.id %}"> <img src="{% static 'img/dislike.png' %}" alt="Cuestionario" role="button" width="90" height="90" /></a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+         <a href="{% url 'match_mascota' mascota.id %}"> <img src="{% static 'img/corazonn.png' %}" alt="Cuestionario" role="button"  width="80" height="80"/></a>
+      </tr>
+    </center>
+   {% endfor %}
+   </tbody>
+
+
+</body>
+</html>
+    {% else %}
+         <h1>Error 404</h1>
+    {% endif %}   
+
+{% endblock %}
+
+
+

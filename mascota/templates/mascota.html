@@ -6,7 +6,7 @@
 
 {% block breadcrumb %}
 
-    {% if user.is_staff %}
+    {% if user.is_active %}
 
 <html lang="en">
 <head>
@@ -38,7 +38,8 @@
                  <th class="bg-info">tipo</th>
                  <th class="bg-info">estado</th>
                  <th class="bg-info">Tamaño</th>
-                 <th class="bg-info">Descripción</th>
+                 <th class="bg-info">Fundación</th>
+                 <th class="bg-info">Personalidad</th>
               </tr>
             </thead>
    <tbody>
@@ -53,11 +54,15 @@
          <td> {{ mascota.tipo}} </td>
          <td> {{ mascota.estado}} </td>
          <td> {{ mascota.tamano }} </td>
-         <td> {{ mascota.descripcion }} </td>
+         <td> {{ mascota.fundacion }} </td> 
+         <td> {{ mascota.personalidad }} </td>
+         
+        
       </tr>
    {% endfor %}
    </tbody>
 </table>
+
 </body>
 </html>
     {% else %}

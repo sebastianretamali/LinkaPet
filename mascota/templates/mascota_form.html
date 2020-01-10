@@ -4,7 +4,7 @@
 
 {% block breadcrumb %} 
 
-  {% if user.is_staff %}
+  {% if user.is_authenticated %}
 
 
 <html lang="en">
@@ -37,6 +37,7 @@
          <a href="{% url 'delete_mascota' mascota.id %}" class="btn btn-primary ml-2">Borrar</a>
         </td>
         {% endif %}
+
     </form>
 
 
@@ -50,6 +51,8 @@
     {% else %}
          <h1>Error 404</h1>
     {% endif %}
-    
-{% endblock %}
 
+
+
+
+{% endblock %}

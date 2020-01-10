@@ -18,7 +18,7 @@
 
      </form>
 <form>
-   <img src="{% static 'img/bff.jpg' %}"></p> <br/>
+   <img src="{% static 'img/bff.jpg' %}" class="w-100"></p> <br/>
 </form>
 
 {% if user.is_authenticated %}
@@ -26,6 +26,7 @@
 {% else %}
   <a href="{% url 'home' %}"> 
 {% endif %}
+
 
 
 {% endblock %}
